@@ -1,11 +1,11 @@
 import React, { ReactNode } from 'react';
 import './TodoListTemplate.css';
 
-type TodoListForm = {
+type TodoListParam = {
     form: ReactNode,
     children: ReactNode,
 };
-const TodoListTemplate: React.FC<TodoListForm> = ({form, children}) => {
+const TodoListTemplate: React.FC<TodoListParam> = ({form, children}) => {
     return (
         <main className="todo-list-template">
             <div className="title">

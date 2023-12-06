@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import TodoListTemplate from './components/TodoListTemplate';
+import Form from './components/Form';
 
 class App extends Component {
   render(){
     return (
-      <TodoListTemplate form={null}>
+      <TodoListTemplate form={<Form/>}>
         템플릿 완성
       </TodoListTemplate>
     )
