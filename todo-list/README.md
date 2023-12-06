@@ -2,6 +2,12 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+
+## 참고사항
+
+해당 토이프로젝트는 *React 기초 입문 프로젝트 – 흔하디 흔한 할 일 목록 만들기* (https://velopert.com/3480) 를 참고
+
+
 ## Available Scripts
 
 In the project directory, you can run:
