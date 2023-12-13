@@ -1,8 +1,8 @@
-import { Component, ReactNode } from "react";
-import TodoItem from "./TodoItem";
+import { Component } from "react";
+import TodoItem, { TodoItemProps } from "./TodoItem";
 
 type todoItemListProps = {
-    todos?: ReactNode,
+    todos: TodoItemProps[],
     onToggle?: any,
     onRemove?: any,
 }
@@ -10,11 +10,22 @@ class TodoItemList extends Component<todoItemListProps> {
     render(){
 
         const { todos, onToggle, onRemove } = this.props;
+
+        const todoList = todos.map(
+            ({id, text, checked}) => (
+                <TodoItem  
+                    id={id}
+                    text={text}
+                    checked={checked}
+                    onToggle={onToggle}
+                    onRemove={onRemove}
+                    key={id}
+                />
+            )
+        );
         return (
             <div>
-                <TodoItem text="안녕" />
-                <TodoItem text="리액트" />
-                <TodoItem text="반가워" />
+                {todoList}
             </div>
         );
     }

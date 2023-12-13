@@ -1,7 +1,7 @@
 import { Component } from "react";
 import './TodoItem.css';
 
-type TodoItemProps = {
+export type TodoItemProps = {
     text: string,
     checked?: boolean,
     id?: number,
