@@ -1,4 +1,4 @@
-import { Component } from "react";
+import { Component, ReactNode } from "react";
 import TodoItem, { TodoItemProps } from "./TodoItem";
 
 type todoItemListProps = {

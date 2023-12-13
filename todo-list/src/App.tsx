@@ -1,4 +1,4 @@
-import React, { ChangeEvent, Component, KeyboardEvent } from 'react';
+import React, { ChangeEvent, Component, KeyboardEvent, MouseEventHandler } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import TodoListTemplate from './components/TodoListTemplate';
@@ -43,12 +43,34 @@ class App extends Component {
       this.handleCreate();
     }
   }
+
+  handleToggle = (id: number) => {
+    console.log(id);
+    const { todos } = this.state;
+
+    const index = todos.findIndex(todo => todo.id === id);
+    const selected = todos[index];
+
+    const nextTodos = [...todos]; //배열을 복사
+
+    //기존의 값들을 복사하고 checked 값을 덮어쓰기
+    nextTodos[index] = {
+      ...selected, 
+      checked: !selected.checked
+    };
+
+    this.setState({
+      todos: nextTodos
+    });
+  }
+
   render(){
     const { input, todos } = this.state;
     const {
       handleChange,
       handleCreate,
-      handleKeyPress
+      handleKeyPress,
+      handleToggle,
     } = this;
     
     return (
@@ -58,7 +80,10 @@ class App extends Component {
           onKeyPress={handleKeyPress}
           onChange={handleChange}
           onCreate={handleCreate}/>}>
-        <TodoItemList todos={todos}/>
+        <TodoItemList 
+          todos={todos}
+          onToggle={handleToggle}
+          />
       </TodoListTemplate>
     )
   }
