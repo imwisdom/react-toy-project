@@ -17,6 +17,7 @@ class TodoItem extends Component<TodoItemProps>{
             <div className="todo-item" onClick={() => onToggle!(id)}>
                 <div className="remove" onClick={(e) => {
                     e.stopPropagation(); // onRemove 후 부모화면에서 onToggle 이 실행되지 않도록 전파방지
+                    onRemove!(id);
                     }
                 }>&times;</div>
                 <div className={`todo-text ${checked && 'checked'}`}>
