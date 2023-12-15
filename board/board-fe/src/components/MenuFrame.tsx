@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
 import {
-  DesktopOutlined,
-  FileOutlined,
-  PieChartOutlined,
-  TeamOutlined,
-  UserOutlined,
+    DesktopOutlined,
+    PieChartOutlined,
+    TeamOutlined,
+    UserOutlined
 } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
+import React, { ReactNode, useState } from 'react';
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -27,19 +26,26 @@ function getItem(
   } as MenuItem;
 }
 
+type PageComponentProps = {
+    children: ReactNode
+}
+
 const items: MenuItem[] = [
-  getItem('Option 1', '1', <PieChartOutlined />),
-  getItem('Option 2', '2', <DesktopOutlined />),
+  getItem('Home', '1', <PieChartOutlined />),
+  getItem('Board', '2', <DesktopOutlined />, [
+    getItem('Tom', '3'),
+    getItem('Bill', '4'),
+    getItem('Alex', '5'),
+  ]),
   getItem('User', 'sub1', <UserOutlined />, [
     getItem('Tom', '3'),
     getItem('Bill', '4'),
     getItem('Alex', '5'),
   ]),
-  getItem('Team', 'sub2', <TeamOutlined />, [getItem('Team 1', '6'), getItem('Team 2', '8')]),
-  getItem('Files', '9', <FileOutlined />),
+  getItem('Questions', 'sub2', <TeamOutlined />),
 ];
 
-const MenuFrame: React.FC = () => {
+const MenuFrame: React.FC<PageComponentProps> = ({children}) => {
   const [collapsed, setCollapsed] = useState(false);
   const {
     token: { colorBgContainer, borderRadiusLG },
@@ -66,7 +72,7 @@ const MenuFrame: React.FC = () => {
               borderRadius: borderRadiusLG,
             }}
           >
-            Bill is a cat.
+            {children}
           </div>
         </Content>
         <Footer style={{ textAlign: 'center' }}>Ant Design ©2023 Created by Ant UED</Footer>
