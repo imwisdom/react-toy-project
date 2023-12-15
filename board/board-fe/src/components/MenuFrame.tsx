@@ -7,6 +7,7 @@ import {
 import type { MenuProps } from 'antd';
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
 import React, { ReactNode, useState } from 'react';
+import { BrowserRouter, Link } from 'react-router-dom';
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -17,14 +18,17 @@ function getItem(
   key: React.Key,
   icon?: React.ReactNode,
   children?: MenuItem[],
+  onClick?: () => void,
 ): MenuItem {
   return {
     key,
     icon,
     children,
     label,
+    onClick,
   } as MenuItem;
 }
+
 
 type PageComponentProps = {
     children: ReactNode
@@ -38,8 +42,8 @@ const items: MenuItem[] = [
     getItem('Alex', '5'),
   ]),
   getItem('User', 'sub1', <UserOutlined />, [
-    getItem('Tom', '3'),
-    getItem('Bill', '4'),
+    getItem('Login', '3'),
+    getItem(<Link to='./signUp'>SignUp</Link>, '4'),
     getItem('Alex', '5'),
   ]),
   getItem('Questions', 'sub2', <TeamOutlined />),
@@ -52,6 +56,7 @@ const MenuFrame: React.FC<PageComponentProps> = ({children}) => {
   } = theme.useToken();
 
   return (
+    <BrowserRouter>
     <Layout style={{ minHeight: '100vh' }}>
       <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
         <div className="demo-logo-vertical" />
@@ -78,6 +83,7 @@ const MenuFrame: React.FC<PageComponentProps> = ({children}) => {
         <Footer style={{ textAlign: 'center' }}>Ant Design ©2023 Created by Ant UED</Footer>
       </Layout>
     </Layout>
+    </BrowserRouter>
   );
 };
 
