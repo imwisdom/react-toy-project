@@ -45,7 +45,6 @@ const items: MenuItem[] = [
   getItem('User', 'sub1', <UserOutlined />, [
     getItem('Login', '3'),
     getItem(<Link to='/sign-up'>SignUp</Link>, '4'),
-    getItem('Alex', '5'),
   ]),
   getItem('Questions', 'sub2', <TeamOutlined />),
 ];
@@ -65,10 +64,7 @@ const MenuFrame: React.FC<PageComponentProps> = ({children, pageTitle}) => {
       <Layout>
         <Header style={{ padding: 0, background: colorBgContainer }} />
         <Content style={{ margin: '0 16px' }}>
-          <Breadcrumb style={{ margin: '16px 0' }}>
-            <Breadcrumb.Item>User</Breadcrumb.Item>
-            <Breadcrumb.Item>Bill</Breadcrumb.Item>
-          </Breadcrumb>
+          {getBreadcrumb(pageTitle)}
           <div
             style={{
               padding: 24,
@@ -96,6 +92,22 @@ const getMenuComponent: React.FC<string|undefined> = (pageTitle?: string) => {
         <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={items} />
     );
     
-}
+};
+
+const getBreadcrumb: React.FC<string|undefined> = (pageTitle?: string) => {
+    if(pageTitle === "signUp"){
+        return (
+            <Breadcrumb style={{ margin: '16px 0' }}>
+                <Breadcrumb.Item>User</Breadcrumb.Item>
+                <Breadcrumb.Item>SignUp</Breadcrumb.Item>
+            </Breadcrumb>
+        );
+    }
+    return (
+        <Breadcrumb style={{ margin: '16px 0' }}>
+            <Breadcrumb.Item>Home</Breadcrumb.Item>
+        </Breadcrumb>
+    );
+};
 
 export default MenuFrame;
