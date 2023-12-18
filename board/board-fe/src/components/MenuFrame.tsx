@@ -31,7 +31,8 @@ function getItem(
 
 
 type PageComponentProps = {
-    children: ReactNode
+    children: ReactNode,
+    pageTitle?: string,
 }
 
 const items: MenuItem[] = [
@@ -49,7 +50,7 @@ const items: MenuItem[] = [
   getItem('Questions', 'sub2', <TeamOutlined />),
 ];
 
-const MenuFrame: React.FC<PageComponentProps> = ({children}) => {
+const MenuFrame: React.FC<PageComponentProps> = ({children, pageTitle}) => {
   const [collapsed, setCollapsed] = useState(false);
   const {
     token: { colorBgContainer, borderRadiusLG },
@@ -59,7 +60,7 @@ const MenuFrame: React.FC<PageComponentProps> = ({children}) => {
     <Layout style={{ minHeight: '100vh' }}>
       <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
         <div className="demo-logo-vertical" />
-        <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={items} />
+        {getMenuComponent(pageTitle)}
       </Sider>
       <Layout>
         <Header style={{ padding: 0, background: colorBgContainer }} />
@@ -84,5 +85,17 @@ const MenuFrame: React.FC<PageComponentProps> = ({children}) => {
     </Layout>
   );
 };
+
+const getMenuComponent: React.FC<string|undefined> = (pageTitle?: string) => {
+    if(pageTitle === "signUp"){
+        return (
+            <Menu theme="dark" openKeys={['sub1']} defaultSelectedKeys={['4']} mode="inline" items={items} />
+        );
+    }
+    return (
+        <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={items} />
+    );
+    
+}
 
 export default MenuFrame;

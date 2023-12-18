@@ -3,7 +3,7 @@ import MenuFrame from '../components/MenuFrame';
 
 const SignUp: React.FC = () => {
     return (
-        <MenuFrame>
+        <MenuFrame pageTitle='signUp'>
             <div>
                 <p>회원가입화면</p>
             </div>
