@@ -36,7 +36,7 @@ type PageComponentProps = {
 }
 
 const items: MenuItem[] = [
-  getItem('Home', '1', <PieChartOutlined />),
+  getItem(<Link to='/'>Home</Link>, '1', <PieChartOutlined />),
   getItem('Board', '2', <DesktopOutlined />, [
     getItem('Tom', '3'),
     getItem('Bill', '4'),
