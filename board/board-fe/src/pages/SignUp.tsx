@@ -1,10 +1,13 @@
 import React from 'react';
+import MenuFrame from '../components/MenuFrame';
 
 const SignUp: React.FC = () => {
     return (
-        <div>
-            <p>회원가입화면</p>
-        </div>
+        <MenuFrame>
+            <div>
+                <p>회원가입화면</p>
+            </div>
+        </MenuFrame>
     )
 };
 

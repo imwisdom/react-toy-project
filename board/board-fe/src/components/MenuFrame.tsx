@@ -7,7 +7,7 @@ import {
 import type { MenuProps } from 'antd';
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
 import React, { ReactNode, useState } from 'react';
-import { BrowserRouter, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -43,7 +43,7 @@ const items: MenuItem[] = [
   ]),
   getItem('User', 'sub1', <UserOutlined />, [
     getItem('Login', '3'),
-    getItem(<Link to='./signUp'>SignUp</Link>, '4'),
+    getItem(<Link to='/sign-up'>SignUp</Link>, '4'),
     getItem('Alex', '5'),
   ]),
   getItem('Questions', 'sub2', <TeamOutlined />),
@@ -56,7 +56,6 @@ const MenuFrame: React.FC<PageComponentProps> = ({children}) => {
   } = theme.useToken();
 
   return (
-    <BrowserRouter>
     <Layout style={{ minHeight: '100vh' }}>
       <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
         <div className="demo-logo-vertical" />
@@ -83,7 +82,6 @@ const MenuFrame: React.FC<PageComponentProps> = ({children}) => {
         <Footer style={{ textAlign: 'center' }}>Ant Design ©2023 Created by Ant UED</Footer>
       </Layout>
     </Layout>
-    </BrowserRouter>
   );
 };
 
