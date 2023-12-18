@@ -43,7 +43,7 @@ const items: MenuItem[] = [
     getItem('Alex', '5'),
   ]),
   getItem('User', 'sub1', <UserOutlined />, [
-    getItem('Login', '3'),
+    getItem(<Link to='/login'>Login</Link>, '3'),
     getItem(<Link to='/sign-up'>SignUp</Link>, '4'),
   ]),
   getItem('Questions', 'sub2', <TeamOutlined />),
@@ -87,6 +87,10 @@ const getMenuComponent: React.FC<string|undefined> = (pageTitle?: string) => {
         return (
             <Menu theme="dark" openKeys={['sub1']} defaultSelectedKeys={['4']} mode="inline" items={items} />
         );
+    }else if(pageTitle === "login"){
+        return (
+            <Menu theme="dark" openKeys={['sub1']} defaultSelectedKeys={['3']} mode="inline" items={items} />
+        );
     }
     return (
         <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={items} />
@@ -100,6 +104,13 @@ const getBreadcrumb: React.FC<string|undefined> = (pageTitle?: string) => {
             <Breadcrumb style={{ margin: '16px 0' }}>
                 <Breadcrumb.Item>User</Breadcrumb.Item>
                 <Breadcrumb.Item>SignUp</Breadcrumb.Item>
+            </Breadcrumb>
+        );
+    }else if(pageTitle === "login"){
+        return (
+            <Breadcrumb style={{ margin: '16px 0' }}>
+                <Breadcrumb.Item>User</Breadcrumb.Item>
+                <Breadcrumb.Item>Login</Breadcrumb.Item>
             </Breadcrumb>
         );
     }
