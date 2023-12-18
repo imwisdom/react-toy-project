@@ -1,11 +1,11 @@
 import React from 'react';
 import MenuFrame from '../components/MenuFrame';
-import SignUpForm from '../components/SignUpForm';
+import LoginForm from '../components/LoginForm';
 
 const Login: React.FC = () => {
     return (
         <MenuFrame pageTitle='login'>
-            <SignUpForm />
+            <LoginForm />
         </MenuFrame>
     )
 };
